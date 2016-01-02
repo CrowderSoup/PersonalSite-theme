@@ -1,0 +1,11 @@
+{
+  "name": "personalsite-theme",
+  "version": "0.0.1",
+  "description": "Theme for CrowderSoup's personal site",
+  "author": "Aaron Crowder <aaron@crowdersoup.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.0"
+  }
+}
