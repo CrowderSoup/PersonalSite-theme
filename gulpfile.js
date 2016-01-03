@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    del = require('del');
+    del = require('del'),
+    sass = require('gulp-sass');
 
 var paths = {
     packages: [
@@ -9,7 +10,7 @@ var paths = {
     output: 'static/'
 };
 
-gulp.task('copy', function() {
+gulp.task('copy', function () {
     for(var i = 0; i < paths.packages.length; i++) {
         var package = paths.packages[i];
         gulp.src(package.src)
@@ -17,10 +18,20 @@ gulp.task('copy', function() {
     }
 });
 
-gulp.task('clean', function() {
+gulp.task('sass', function () {
+    gulp.src('static/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./static'));
+});
+
+gulp.task('sass:watch', function () {
+    gulp.watch('static/*.scss', ['sass']);
+});
+
+gulp.task('clean', function () {
     return del([paths.output + '/*']);
 });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('copy');
+    gulp.start('copy', 'sass');
 });

@@ -8,7 +8,10 @@
 	{% block extra_meta %}
 	{% endblock %}
 
-    <link rel="stylesheet" href="/theme/packages/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/theme/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/theme/font-awesome/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="/theme/main.css" />
 
 	{% block scripts %}
 	{% endblock %}
@@ -39,6 +42,20 @@
           {% endif %}
       </div>
     </div>
+
+	<div class="container">
+		<div class="blog-header">
+			<h1 class="blog-title">{{ SITENAME }}</h1>
+			<p class="lead blog-description">{{ SITESUBTITLE }}</p>
+		</div>
+
+		<div class="col-sm-8 blog-main">
+			{% block content %}{% endblock %}
+		</div>
+		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+		</div>
+	</div>
 
     {% if GOOGLE_ANALYTICS %}
       <script>

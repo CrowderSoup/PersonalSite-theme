@@ -1,2 +1,4 @@
 node_modules/*
-static/*
+static/bootstrap/*
+static/font-awesome/*
+static/main.css
