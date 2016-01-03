@@ -7,7 +7,7 @@ comes with `npm`, a package management tool. I'm using it to install `gulp`, a
 task runner, and Bootstrap. `gulp` will then move Bootstrap from where `npm` put
 it to where Pelican expects it to be.
 
-Do so like this:
+After cloning this repo, run `npm` and `gulp` like this:
 
 ```bash
 npm install # Installs packages
