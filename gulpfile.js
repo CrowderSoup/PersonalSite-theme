@@ -3,15 +3,18 @@ var gulp = require('gulp'),
 
 var paths = {
     packages: [
-        { src: 'node_modules/bootstrap/dist/**/*', dest: 'bootstrap'},
-        'node_modules/font-awesome/css/**/*',
-        'node_modules/font-awesome/fonts/**/*'],
-    output: 'static'
+        { src: 'node_modules/bootstrap/dist/**/*', dest: 'bootstrap' },
+        { src: 'node_modules/font-awesome/css/**/*', dest: 'font-awesome/css' },
+        { src: 'node_modules/font-awesome/fonts/**/*', dest: 'font-awesome/fonts' }],
+    output: 'static/'
 };
 
 gulp.task('copy', function() {
-    return gulp.src(paths.packages)
-        .pipe(gulp.dest(paths.output));
+    for(var i = 0; i < paths.packages.length; i++) {
+        var package = paths.packages[i];
+        gulp.src(package.src)
+            .pipe(gulp.dest(paths.output + package.dest));
+    }
 });
 
 gulp.task('clean', function() {
