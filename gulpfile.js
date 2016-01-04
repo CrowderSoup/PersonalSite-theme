@@ -29,9 +29,12 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('clean', function () {
-    return del([paths.output + '/*']);
+    for(var i = 0; i < paths.packages.length; i++) {
+        var package = paths.packages[i];
+        del([paths.output + package.dest]);
+    }
 });
 
-gulp.task('default', ['clean'], function() {
+gulp.task('default', function() {
     gulp.start('copy', 'sass');
 });

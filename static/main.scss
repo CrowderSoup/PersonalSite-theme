@@ -1,6 +1,7 @@
 /* Variables */
 $masthead-bg: #428bca;
 $masthead-border: #3D7FB9;
+$navbar-text-color: #ECECEC;
 $light-font: #999999;
 
 /* Styles */
@@ -8,9 +9,17 @@ $light-font: #999999;
     border-radius: 0;
 }
 
-.navbar-default {
+.navbar-default, .navbar-inverse {
     background-color: $masthead-bg;
     border-color: $masthead-border;
+
+    .navbar-brand {
+        color: $navbar-text-color;
+    }
+
+    .navbar-nav>li>a {
+        color: $navbar-text-color;
+    }
 }
 
 .blog-header {
