@@ -1,0 +1,22 @@
+
+{% if DEFAULT_PAGINATION %}
+<nav>
+    <ul class="pager">
+        {% if articles_page.has_previous() %}
+            <li class="previous">
+                <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">
+                    <span aria-hidden="true">&larr;</span> Older
+                </a>
+            </li>
+        {% endif %}
+        <li class="page-indicator">Page {{ articles_page.number }} / {{ articles_paginator.num_pages }}</li>
+        {% if articles_page.has_next() %}
+            <li class="next">
+                <a href="{{ SITEURL }}/{{ articles_next_page.url }}">
+                    Newer <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

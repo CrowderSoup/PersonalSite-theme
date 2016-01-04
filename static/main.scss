@@ -5,11 +5,11 @@ $navbar-text-color: #ECECEC;
 $light-font: #999999;
 
 /* Styles */
-.navbar {
+nav.navbar {
     border-radius: 0;
 }
 
-.navbar-default, .navbar-inverse {
+nav.navbar-default, nav.navbar-inverse {
     background-color: $masthead-bg;
     border-color: $masthead-border;
 
@@ -22,21 +22,34 @@ $light-font: #999999;
     }
 }
 
-.blog-header {
-    .blog-title {
-        margin-top: 30px;
-        margin-bottom: 0;
-        font-size: 60px;
-        font-weight: normal;
-    }
+nav {
 
-    .blog-description {
-        color: $light-font;
+    ul.pager {
+        li.page-indicator {
+            line-height: 32px;
+        }
     }
+}
+
+.blog-description {
+    color: $light-font;
+    font-style: italic;
 }
 
 article {
     img {
         width: 100%;
+    }
+
+    footer {
+        font-size: 10px;
+
+        time, address {
+            font-style: italic;
+        }
+
+        address {
+            display: inline-block;
+        }
     }
 }

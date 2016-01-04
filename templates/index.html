@@ -3,31 +3,34 @@
 
 {% block content %}
 
-    {% for article in articles %}
-        {% if loop.index == 1 %}
-            <div class="row">
-                <div class="col-md-12">
-                    <article>
-                        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-                        {{ article.content }}
-                    </article>
+    {% for article in articles_page.object_list %}
+    <div class="row">
+        <div class="col-md-12">
+            <article>
+                <header>
+                    <h2>
+                        <a href="{{ SITEURL }}/{{ article.url }}">
+                            {{ article.title }}
+                        </a>
+                    </h2>
+                </header>
+                <footer>
+                    Published On <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
+                    By <address class="vcard author">
+                    {% for author in article.authors %}
+                        <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                    {% endfor %}
+                    </address>
+                </footer>
+                <div class="entry-content">
+                    {{ article.summary }}
                 </div>
-            </div>
-
-        {% if loop.length > 1 %}
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Recent Posts</h2>
-                    <ol class="archive">
-
-        {% endif %}
-        {% elif loop.index < 7 %}
-                        <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
-        {% endif %}
+            </article>
+            <hr />
+        </div>
+    </div>
     {% endfor %}
-    {% if articles|length > 1 %}
-                    </ol>
-                </div>
-            </div>
+    {% if articles_page.has_other_pages() %}
+        {% include 'pagination.html' %}
     {% endif %}
 {% endblock content %}
