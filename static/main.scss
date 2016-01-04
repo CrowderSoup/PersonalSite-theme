@@ -1,7 +1,18 @@
 /* Variables */
+$masthead-bg: #428bca;
+$masthead-border: #3D7FB9;
 $light-font: #999999;
 
 /* Styles */
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: $masthead-bg;
+    border-color: $masthead-border;
+}
+
 .blog-header {
     .blog-title {
         margin-top: 30px;
@@ -12,5 +23,11 @@ $light-font: #999999;
 
     .blog-description {
         color: $light-font;
+    }
+}
+
+article {
+    img {
+        width: 100%;
     }
 }
