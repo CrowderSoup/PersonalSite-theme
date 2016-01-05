@@ -2,10 +2,37 @@
 {% block content %}
 <h1>Archives for {{ SITENAME }}</h1>
 
-<dl>
-{% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
-{% endfor %}
-</dl>
+    <div class="panel-group" id="years-accordion">
+        {% for year, year_articles in articles|groupby('date.year') %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a href="#year-collapse-{{ year }}" data-toggle="collapse" data-parent="#years-accordion">Year: {{ year }}</a>
+                    </h2>
+                </div>
+                <div id="year-collapse-{{ year }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="panel-group" id="months-in-{{ year }}-accordion">
+                            {% for month, month_articles in year_articles|groupby('date.month') %}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="#{{ month }}-in-{{ year }}" data-toggle="collapse" data-parent="#months-in-{{ year }}-accordion">{{ month_articles[0].date.strftime('%B') }}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="{{ month }}-in-{{ year }}" class="panel-collapse collapse">
+                                        <ul>
+                                            {% for article in month_articles %}
+                                                    <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a> published on {{ article.date.strftime('%A, %d') }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
