@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+{% block content %}
+    <h1>Authors on {{ SITENAME }}</h1>
+
+    <ul class="nav nav-pills nav-stacked">
+    {%- for author, articles in authors|sort %}
+        <li>
+            <a href="{{ SITEURL }}/{{ author.url }}">
+                {{ author }} <span class="badge">{{ articles|count }}</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

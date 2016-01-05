@@ -1,1 +1,10 @@
 {% extends "base.html" %}
+<ul class="nav nav-pills nav-stacked">
+{% for cat, articles in categories %}
+    <li>
+        <a href="{{ SITEURL }}/{{ cat.url }}">
+            {{ cat }}
+        </a>
+    </li>
+{% endfor %}
+</ul>

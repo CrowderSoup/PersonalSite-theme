@@ -1,1 +1,11 @@
 {% extends "base.html" %}
+{% block content %}
+    <h1>Posts published by: {{ author }}</h1>
+    
+    {% for article in articles_page.object_list %}
+        {% include 'article_summary.html' %}
+    {% endfor %}
+    {% if articles_page.has_other_pages() %}
+        {% include 'pagination.html' %}
+    {% endif %}
+{% endblock content %}
