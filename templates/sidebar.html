@@ -22,6 +22,19 @@
 {% endfor %}
 </ul>
 
+<h4>Popular Tags</h4>
+<ul class="nav nav-pills nav-stacked">
+{% for t, articles in tags_sorted_by_article_length %}
+    {% if loop.index <= 5 %}
+        <li {% if t == tag %}class="active"{% endif %}>
+            <a href="{{ SITEURL }}/{{ t.url }}">
+                {{ t }} <span class="badge">{{ articles|count }}</span>
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
 <h4>Blogroll</h4>
 <ul class="nav nav-pills nav-stacked">
     {% for name, link in LINKS %}
